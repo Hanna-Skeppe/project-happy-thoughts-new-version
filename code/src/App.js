@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import HappyForm from './HappyForm'
 import HappyList from './HappyList'
+import './index.css'
 
 //I put useState in App to be able to compare states between components 
 export const App = () => {
@@ -19,7 +20,7 @@ export const App = () => {
     fetchMessages();
   }, []);
 
-  //fetch GET data from the server and adding it to our messages:
+  //GET data from the server and adding it to our messages:
   const fetchMessages = () => {
     fetch(MESSAGES_URL)
       .then(response => {
@@ -35,9 +36,8 @@ export const App = () => {
       })
       .catch(error => console.error(error))
   };
-  //fetch POST message (reach HappyForm):
+  //POST message (reach HappyForm):
   const postHappyMessage = (newMessage) => {
-    //Post request:
     fetch(MESSAGES_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -47,7 +47,7 @@ export const App = () => {
       .catch(error => console.error(error)) //Should this be here?
   };
 
-  //fetch POST HappyLike:
+  //POST HappyLike:
   const postThoughtLike = id => {
     fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
       method: 'POST',

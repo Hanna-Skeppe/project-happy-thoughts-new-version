@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.app-wrapper {
+  background: #d37676 url("hearts-background.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: 30% -10%;
+}
