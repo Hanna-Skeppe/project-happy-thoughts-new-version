@@ -26,4 +26,4 @@ If I had more time I would have added som animations/transitions on button and l
 
 ## View it live
 
-https://hannas-happy-thoughts-app.netlify.app/
+
