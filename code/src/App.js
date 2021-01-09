@@ -20,7 +20,10 @@ export const App = () => {
   
   useEffect(() => {
     fetchMessages();
-  });
+    // eslint-disable-next-line
+  }, [sort]);
+  // Warning in console when I have "sort" as dependency (but works): 
+  //"React Hook useEffect has a missing dependency: 'fetchMessages'. Either include it or remove the dependency array" 
 
   //POST: Add a thought (message), (reach HappyForm):
   const postHappyMessage = (newMessage, name) => {

@@ -69,6 +69,7 @@ const HappyForm = ({ onMessageChange }) => {
             }
             value="Add Message"
           >
+            {/* eslint-disable-next-line */}
           <span>❤️ Send Happy Thought! ❤️</span>
           </button>
           <p aria-hidden="true">{newMessage.length} / 140</p>

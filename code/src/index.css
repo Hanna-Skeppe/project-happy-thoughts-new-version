@@ -17,4 +17,5 @@ code {
   background-size: cover;
   background-repeat: repeat-y;
   background-position: 30% 10%;
+  min-height: 100vh;
 }
