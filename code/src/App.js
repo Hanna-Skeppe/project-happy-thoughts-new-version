@@ -21,6 +21,7 @@ export const App = () => {
   useEffect(() => {
     fetchMessages();
   }, []);
+  //AFTER DEPLOY: [sort, MESSEGES_URL] above
 
   //GET data from the server and adding it to our messages:
   const fetchMessages = () => {
@@ -38,6 +39,7 @@ export const App = () => {
       })
       .catch(error => console.error(error))
   };
+  
   //POST message (reach HappyForm):
   const postHappyMessage = (newMessage) => {
     fetch(MESSAGES_URL, {
