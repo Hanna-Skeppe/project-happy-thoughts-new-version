@@ -27,7 +27,7 @@ const HappyList = ({ messageList, handleThoughtLike }) => {
               tabIndex="0"
               aria-label={message.name}
             >
-              Sent by: {message.name}
+              Posted by: {message.name}
             </span>
           </div>
           <div className="happy-post-footer">
