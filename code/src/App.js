@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
 import HappyForm from './HappyForm'
+import SortList  from './SortList'
 import HappyList from './HappyList'
 import './index.css'
 
 //I put useState in App to be able to compare states between components 
 export const App = () => {
   //Here I establish connection to the API
-  //Create state for messages
-  const [messages, setMessages] = useState([]);
-  const MESSAGES_URL = "https://happy-thoughts-technigo.herokuapp.com/thoughts";
 
+  const [messages, setMessages] = useState([]);
+  const [sort, setSort] = useState('');
+  const MESSAGES_URL = "https://happy-thoughts-technigo.herokuapp.com/thoughts";
+  //new MESSEGES_URL after deploy: `https://happy-thoughts-hanna.herokuapp.com/thoughts/?sort=${sort}`
   // Use useEffect to fetch messages from backend 
   //( = a function that triggers when state changes occur, and then a re-render is performed)
   //use effects accepts a function as the first argument, and an array of dependencies 
@@ -44,7 +46,7 @@ export const App = () => {
       body: JSON.stringify({ message: newMessage })
     })
       .then(() => fetchMessages()) //After posting new message, we also fetch messages.
-      .catch(error => console.error(error)) //Should this be here?
+      .catch(error => console.error(error))
   };
 
   //POST HappyLike:
@@ -60,6 +62,7 @@ export const App = () => {
   return (
     <div className="app-wrapper">
       <HappyForm onMessageChange={postHappyMessage} />
+      <SortList onChange={(event) => setSort(event.target.value)} />
       <HappyList messageList={messages} handleThoughtLike={postThoughtLike} />
     </div>
   );
