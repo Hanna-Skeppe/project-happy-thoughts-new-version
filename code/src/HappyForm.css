@@ -34,12 +34,21 @@
   margin: auto;
   width: 90%;
   height: 110px;
-  font-size: 16px;
+  font-size: 18px;
   border: 1px solid #7c7b7b;
+  font-family: 'Inconsolata', monospace;
 }
 
 .happy-form-text-too-long {
   background: #f87979;
+}
+
+.happy-form-name-input {
+  font-size: 18px;
+  width: 250px;
+  height: 30px;
+  margin: 20px 0 0 0;
+  font-family: 'Inconsolata', monospace;
 }
 
 .form-footer {

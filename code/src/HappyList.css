@@ -24,12 +24,26 @@
   margin: 15px 0;
 }
 
+.happy-post-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  margin: 20px auto 0 auto;
+}
+
 .happy-message {
   overflow-wrap: break-word;
-  margin: 20px auto;
-  width: 90%;
-  font-weight: 500;
+  margin: 20 0 20px 0;
   font-size: 16px;
+  font-weight: 500;
+}
+
+.happy-message-name {
+  align-self: flex-end;
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #505050;
 }
 
 .happy-post-footer {
@@ -43,7 +57,7 @@
 .happy-likes-wrapper {
   display: flex;
   align-items: center;
-  color: #7c7b7b;
+  color: #505050;
   font-size: 16px;
 }
 
@@ -104,9 +118,11 @@
     width: 80%;
   }
 
+  .happy-post-header {
+    margin: 25px auto 0 auto;
+  }
   .happy-message {
     font-size: 22px;
-    margin: 25px auto;
   }
 
   .happy-likes-wrapper,

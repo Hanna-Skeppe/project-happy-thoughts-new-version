@@ -5,60 +5,42 @@ import SortList  from './SortList'
 import HappyList from './HappyList'
 import './index.css'
 
-//I put useState in App to be able to compare states between components 
 export const App = () => {
-  //Here I establish connection to the API
-
-  const [messages, setMessages] = useState([]);
-  const [sort, setSort] = useState('');
-  const MESSAGES_URL = "https://happy-thoughts-technigo.herokuapp.com/thoughts";
-  //new MESSEGES_URL after deploy: `https://happy-thoughts-hanna.herokuapp.com/thoughts/?sort=${sort}`
-  // Use useEffect to fetch messages from backend 
-  //( = a function that triggers when state changes occur, and then a re-render is performed)
-  //use effects accepts a function as the first argument, and an array of dependencies 
-  //as a second argument, so adding an empty array as a second argument means that 
-  //it will run when the component loads the first time.
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-  //AFTER DEPLOY: [sort, MESSEGES_URL] above
-
-  //GET data from the server and adding it to our messages:
+  const [messages, setMessages] = useState([]); //useState in App to be able to compare states between components 
+  const [sort, setSort] = useState('default');
+  const MESSAGES_URL = 'https://happy-thoughts-hanna.herokuapp.com/thoughts';
+  
+  //GET: Fetch messages from API:
   const fetchMessages = () => {
-    fetch(MESSAGES_URL)
-      .then(response => {
-        return response.json();
-      })
-      //Set the state (data is an array of messeges):
-      .then(data => {
-        //Filter out messages that don't have any text:
-        const filteredData = data.filter(message => {
-          return message.message;
-        })
-        setMessages(filteredData);
-      })
+    fetch(`${MESSAGES_URL}/?sort=${sort}`)
+      .then(response => response.json())
+      .then(data => setMessages(data))
       .catch(error => console.error(error))
   };
   
-  //POST message (reach HappyForm):
-  const postHappyMessage = (newMessage) => {
+  useEffect(() => {
+    fetchMessages();
+  });
+
+  //POST: Add a thought (message), (reach HappyForm):
+  const postHappyMessage = (newMessage, name) => {
     fetch(MESSAGES_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: newMessage })
+      body: JSON.stringify({ message: newMessage, name: name })
     })
-      .then(() => fetchMessages()) //After posting new message, we also fetch messages.
+      .then(() => fetchMessages()) //After posting new message, fetch messages.
       .catch(error => console.error(error))
   };
-
-  //POST HappyLike:
+  
+  //POST: Add a like-heart to a thought
   const postThoughtLike = id => {
-    fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
+    fetch(`https://happy-thoughts-hanna.herokuapp.com/thoughts/${id}/like`, {
       method: 'POST',
       body: '',
       headers: { 'Content-Type': 'application/json' },
     })
-      .then(() => fetchMessages()) //What is the difference between writing like this and just: .then(fetchMessages())?
+      .then(() => fetchMessages())
   };
 
   return (
